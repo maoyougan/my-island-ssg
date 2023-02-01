@@ -25,7 +25,6 @@ export async function bundle(root: string) {
   });
 
   console.log('Building client + server bundles...');
-  console.log('Lint-stage test');
 
   try {
     const [clientBundle, serverBundle] = await Promise.all([
