@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsup --watch",
     "build": "tsup",
-    "test:init": "vitest run",
+    "test:init": "vitest --ui",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx ./",
     "lint:fix": "eslint --fix --ext .ts,.tsx,.js,.jsx --quiet ./",
     "prepare": "husky install"
@@ -21,6 +21,7 @@
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
+    "@vitest/ui": "^0.28.3",
     "commitlint": "^17.4.2",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
