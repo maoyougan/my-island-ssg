@@ -162,6 +162,7 @@ async function bundle(root) {
     }
   });
   console.log("Building client + server bundles...");
+  console.log("Lint-stage test");
   try {
     const [clientBundle, serverBundle] = await Promise.all([
       _vite.build.call(void 0, resolveViteConfig(false)),
