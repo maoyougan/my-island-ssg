@@ -2,6 +2,7 @@ import { cac } from 'cac';
 import { resolve } from 'path';
 // import { createDevServer } from './dev';
 import { build } from './build';
+import { resolveConfig } from './config';
 
 const version = require('../../package.json').version;
 
@@ -31,7 +32,8 @@ cli
     console.log('build', root);
     try {
       root = resolve(root);
-      await build(root);
+      const config = await resolveConfig(root, 'build', 'production');
+      await build(root, config);
     } catch (e) {
       console.log(e);
     }

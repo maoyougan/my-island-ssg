@@ -1,12 +1,13 @@
-import { relative } from 'path';
+import { join, relative } from 'path';
 import { Plugin } from 'vite';
 import { SiteConfig } from '../../shared/types';
+import { PACKAGE_ROOT } from '../constants';
 
 const SITE_DATA_ID = 'island:site-data';
 
 export function pluginConfig(
   config: SiteConfig,
-  restartSever: () => Promise<void>
+  restartSever?: () => Promise<void>
 ): Plugin {
   return {
     name: 'island:config',
@@ -31,6 +32,15 @@ export function pluginConfig(
       }
       // restart server
       await restartSever();
+    },
+    config() {
+      return {
+        resolve: {
+          alias: {
+            '@runtime': join(PACKAGE_ROOT, 'src', 'runtime', 'index.ts')
+          }
+        }
+      };
     }
   };
 }

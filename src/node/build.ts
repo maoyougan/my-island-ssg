@@ -4,14 +4,19 @@ import fs from 'fs-extra';
 import { join } from 'path';
 import type { RollupOutput } from 'rollup';
 import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from './constants';
+import { SiteConfig } from 'shared/types';
+import { pluginConfig } from './plugin-island/config';
 
 // const dynamicImport = new Function('m', 'return import(m)')
 
-export async function bundle(root: string) {
+export async function bundle(root: string, config: SiteConfig) {
   const resolveViteConfig = (isServer: boolean): InlineConfig => ({
     mode: 'production',
     root,
-    plugins: [pluginReact()],
+    plugins: [pluginReact(), pluginConfig(config)],
+    ssr: {
+      noExternal: ['react-router-dom']
+    },
     build: {
       ssr: isServer,
       outDir: isServer ? '.temp' : 'build',
@@ -69,11 +74,15 @@ export async function renderPage(
   await fs.remove(join(root, '.temp'));
 }
 
-export async function build(root: string = process.cwd()) {
-  const [clientBundle] = await bundle(root);
+export async function build(root: string = process.cwd(), config: SiteConfig) {
+  const [clientBundle] = await bundle(root, config);
   // 引入ssr入口模块
   const serverEntryPath = join(root, '.temp', 'ssr-entry.js');
   const { render } = await import(serverEntryPath);
 
-  await renderPage(render, root, clientBundle);
+  try {
+    await renderPage(render, root, clientBundle);
+  } catch (e) {
+    console.log('Render page error.\n', e);
+  }
 }

@@ -6,13 +6,13 @@ import { resolveConfig } from './config';
 import { pluginConfig } from './plugin-island/config';
 
 export async function createDevServer(
-  root = process.cwd(),
+  root = PACKAGE_ROOT,
   restartSever: () => Promise<void>
 ) {
   const config = await resolveConfig(root, 'serve', 'development');
   console.log('config', config);
   return createViteServer({
-    root,
+    root: PACKAGE_ROOT,
     plugins: [
       pluginIndexHtml(),
       pluginReact(),
