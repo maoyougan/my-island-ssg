@@ -29,7 +29,7 @@ describe('RouteService', async () => {
 
   test('generate routes code', async () => {
     expect(routeService.generateRoutesCode().replaceAll(testDir, 'TEST_DIR'))
-      .toMatchSnapshot(`
+      .toMatchInlineSnapshot(`
       "
       import React from 'react';
       import loadable from '@loadable/component';
