@@ -6,3 +6,10 @@ title: 'FrontMatter Plguin'
 ## Autolink 
 
 literals www.example.com, https://example.com, and contact@example.com.
+
+```js
+console.log(123);
+test.idsssss
+idididdid
+teess
+```

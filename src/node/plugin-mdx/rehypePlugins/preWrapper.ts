@@ -19,8 +19,6 @@ export const rehypePluginPreWrapper: Plugin<[], Root> = () => {
         // 2.language-xxx
         const lang = codeClassName.split('-')[1];
 
-        codeNode.properties.className = '';
-
         // 3. Html AST transfor
         const clonedNode: Element = {
           type: 'element',
