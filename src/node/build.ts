@@ -1,11 +1,12 @@
 import { build as viteBuild, InlineConfig } from 'vite';
-import pluginReact from '@vitejs/plugin-react';
+// import pluginReact from '@vitejs/plugin-react';
 import fs from 'fs-extra';
 import { join } from 'path';
 import type { RollupOutput } from 'rollup';
 import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from './constants';
 import { SiteConfig } from 'shared/types';
-import { pluginConfig } from './plugin-island/config';
+// import { pluginConfig } from './plugin-island/config';
+import { createVitePlugins } from './vitePlugins';
 
 // const dynamicImport = new Function('m', 'return import(m)')
 
@@ -13,7 +14,7 @@ export async function bundle(root: string, config: SiteConfig) {
   const resolveViteConfig = (isServer: boolean): InlineConfig => ({
     mode: 'production',
     root,
-    plugins: [pluginReact(), pluginConfig(config)],
+    plugins: createVitePlugins(config),
     ssr: {
       noExternal: ['react-router-dom']
     },

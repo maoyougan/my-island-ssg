@@ -19,7 +19,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
-    "@loadable/component": "^5.15.3",
     "@playwright/test": "^1.30.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.11.18",
@@ -47,6 +46,8 @@
     "vitest": "^0.28.3"
   },
   "dependencies": {
+    "@loadable/component": "^5.15.3",
+    "@mdx-js/rollup": "^2.2.1",
     "@vitejs/plugin-react": "^3.0.1",
     "cac": "^6.7.14",
     "fast-glob": "^3.2.12",
@@ -54,6 +55,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-slug": "^5.1.0",
+    "remark-frontmatter": "^4.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-mdx-frontmatter": "^2.1.1",
     "vite": "^4.0.4"
   },
   "bin": {
