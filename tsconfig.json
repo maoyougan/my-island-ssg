@@ -12,5 +12,5 @@
       "@runtime": ["runtime/index.ts"]
     }
   },
-  // "exclude": ["tsup.config.ts", "./docs/*"]
+  "include": ["e2e/**/*.ts", "src/**/*"],
 }

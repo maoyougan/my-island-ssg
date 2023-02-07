@@ -19,6 +19,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
+    "@loadable/component": "^5.15.3",
     "@playwright/test": "^1.30.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.11.18",
@@ -44,6 +45,7 @@
   "dependencies": {
     "@vitejs/plugin-react": "^3.0.1",
     "cac": "^6.7.14",
+    "fast-glob": "^3.2.12",
     "fs-extra": "^11.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
