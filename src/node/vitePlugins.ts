@@ -7,14 +7,16 @@ import { createPluginMdx } from './plugin-mdx';
 
 export async function createVitePlugins(
   config: SiteConfig,
-  restartSever?: () => Promise<void>
+  restartSever?: () => Promise<void>,
+  isSSR = false
 ) {
   return [
     pluginIndexHtml(),
     pluginReact({ jsxRuntime: 'automatic' }),
     pluginConfig(config, restartSever),
     pluginRoutes({
-      root: config.root
+      root: config.root,
+      isSSR
     }),
     await createPluginMdx()
   ];
