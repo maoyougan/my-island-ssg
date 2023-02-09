@@ -11,6 +11,16 @@ export function pluginConfig(
 ): Plugin {
   return {
     name: 'island:config',
+    config() {
+      return {
+        root: PACKAGE_ROOT,
+        resolve: {
+          alias: {
+            '@runtime': join(PACKAGE_ROOT, 'src', 'runtime', 'index.ts')
+          }
+        }
+      };
+    },
     resolveId(id) {
       if (id === SITE_DATA_ID) {
         return '\0' + SITE_DATA_ID;
@@ -29,18 +39,9 @@ export function pluginConfig(
         console.log(
           `\n${relative(config.root, ctx.file)} changed, restarting server....`
         );
+        // restart server
+        await restartSever();
       }
-      // restart server
-      await restartSever();
-    },
-    config() {
-      return {
-        resolve: {
-          alias: {
-            '@runtime': join(PACKAGE_ROOT, 'src', 'runtime', 'index.ts')
-          }
-        }
-      };
     }
   };
 }
