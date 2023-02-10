@@ -1,4 +1,6 @@
-import { UserConfig as ViteConfiguration } from 'vite';
+import type { UserConfig as ViteConfiguration } from 'vite';
+import type { ComponentType } from 'react';
+import { FrontMatter } from '..';
 
 export type NavItemWithLink = {
   text: string;
@@ -40,4 +42,10 @@ export interface SiteConfig {
   root: string;
   configPath: string;
   siteData: UserConfig;
+}
+
+export interface PageModule {
+  default: ComponentType;
+  frontmatter?: FrontMatter;
+  [key: string]: unknown;
 }
