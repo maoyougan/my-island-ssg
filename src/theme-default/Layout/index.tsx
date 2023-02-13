@@ -4,6 +4,7 @@ import '../style/base.css';
 import '../style/vars.css';
 import { Nav } from '../components/Nav';
 import { HomeLayout } from './HomeLayout';
+import { DocLayout } from './DocLayout';
 
 export function Layout() {
   const pageData = usePageData();
@@ -13,7 +14,7 @@ export function Layout() {
       case 'home':
         return <HomeLayout />;
       case 'doc':
-        return <div>Content Page</div>;
+        return <DocLayout />;
       default:
         return <div>404 Page</div>;
     }

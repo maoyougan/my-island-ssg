@@ -2,6 +2,7 @@ import { join, relative } from 'path';
 import { Plugin } from 'vite';
 import { SiteConfig } from '../../shared/types';
 import { PACKAGE_ROOT } from '../constants';
+import sirv from 'sirv';
 
 const SITE_DATA_ID = 'island:site-data';
 
@@ -47,6 +48,10 @@ export function pluginConfig(
         // restart server
         await restartSever();
       }
+    },
+    configureServer(server) {
+      const publicDir = join(config.root, 'public');
+      server.middlewares.use(sirv(publicDir));
     }
   };
 }
