@@ -1,4 +1,4 @@
-import { UserConfig } from './types';
+import { Feature, Hero, UserConfig } from './types';
 
 export type PageType = 'home' | 'doc' | 'custom' | '404';
 
@@ -14,6 +14,8 @@ export interface FrontMatter {
   pageType?: PageType;
   sideBar?: boolean;
   outline?: boolean;
+  features?: Feature[];
+  hero?: Hero;
 }
 
 export interface PageData {
