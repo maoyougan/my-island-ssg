@@ -1,6 +1,6 @@
 import type { UserConfig as ViteConfiguration } from 'vite';
 import type { ComponentType } from 'react';
-import { FrontMatter } from '..';
+import { FrontMatter, Header } from '..';
 
 export type NavItemWithLink = {
   text: string;
@@ -47,6 +47,7 @@ export interface SiteConfig {
 export interface PageModule {
   default: ComponentType;
   frontmatter?: FrontMatter;
+  toc?: Header[];
   [key: string]: unknown;
 }
 
