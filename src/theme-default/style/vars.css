@@ -154,7 +154,7 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --island-layout-max-width: 1440px;
+  --island-layout-max-width: 1280px;
 }
 
 /**
@@ -320,6 +320,7 @@
 
 :root {
   --island-sidebar-width: 272px;
+  --island-aside-width: 268px;
 }
 
 /**
