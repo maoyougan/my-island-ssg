@@ -10,7 +10,7 @@ export function Aside(props: AsideProps) {
   const hasOutline = headers.length > 0;
   const markerRef = useRef<HTMLDivElement>(null);
 
-  const renderHeader = (header: Header, index: number) => {
+  const renderHeader = (header: Header) => {
     return (
       <li key={header.id}>
         <a
