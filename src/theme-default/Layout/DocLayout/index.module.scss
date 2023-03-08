@@ -27,7 +27,7 @@ $sidebarPadding: calc(32px + (100vw - var(--island-layout-max-width)) / 2);
 }
 
 .aside-container {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: var(--island-layout-max-width);
   // width: 300px;

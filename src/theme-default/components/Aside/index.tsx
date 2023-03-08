@@ -1,14 +1,24 @@
 import { Header } from 'shared/index';
 import { useRef, useEffect } from 'react';
+import { bindingAsideScroll, scrollToTarget } from '../../logic/asideScroll';
+import { useHeaders } from '../../logic/useHeaders';
 
 interface AsideProps {
   headers: Header[];
 }
 
 export function Aside(props: AsideProps) {
-  const { headers = [] } = props;
+  const { headers: rawHeaders = [] } = props;
+  const headers = useHeaders(rawHeaders);
   const hasOutline = headers.length > 0;
   const markerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const unbinding = bindingAsideScroll();
+    return () => {
+      unbinding();
+    };
+  }, []);
 
   const renderHeader = (header: Header) => {
     return (
@@ -19,6 +29,11 @@ export function Aside(props: AsideProps) {
           transition="color duration-300"
           style={{
             paddingLeft: (header.depth - 2) * 12
+          }}
+          onClick={(e) => {
+            e.preventDefault();
+            const target = document.getElementById(header.id);
+            target && scrollToTarget(target, false);
           }}
         >
           {header.text}
